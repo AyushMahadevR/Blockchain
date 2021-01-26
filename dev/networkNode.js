@@ -192,8 +192,9 @@ app.get('/transcation/:transcationId', function (req, res) {
 })
 
 app.get('/address/:addressId', function (req, res) {
-
-
+    const addressId = req.params.addressId
+    const addressData = bitcoin.getAddressData(addressId)
+    res.json({ status: "success", ...addressData })
 })
 
 app.listen(port, function () {
